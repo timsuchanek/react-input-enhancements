@@ -80,7 +80,8 @@ export default class Dropdown extends PureComponent {
     options: PropTypes.arrayOf(shapes.ITEM_OR_STRING),
     onRenderOption: PropTypes.func,
     onRenderList: PropTypes.func,
-    optionFilters: PropTypes.arrayOf(PropTypes.func)
+    optionFilters: PropTypes.arrayOf(PropTypes.func),
+    onListToggle: PropTypes.func
   };
 
   static defaultProps = {
@@ -122,6 +123,12 @@ export default class Dropdown extends PureComponent {
 
   componentWillUpdate(nextProps, nextState) {
     const { options, optionFilters } = nextProps;
+
+    if (nextState.listShown !== this.state.listShown) {
+      if (typeof this.props.onListToggle === 'function') {
+        this.props.onListToggle(nextState.listShown)
+      }
+    }
 
     if (nextProps.value && nextState.value === null ||
         this.props.value !== nextProps.value) {
