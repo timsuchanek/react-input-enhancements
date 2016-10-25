@@ -195,10 +195,11 @@ function getStylingFromBase16(/*base16Theme*/) {
           padding: '1rem 1.5rem',
           cursor: 'pointer',
           color: '#FFFFFF',
-          backgroundColor: '#3333FF'
+          backgroundColor: '#4a90e2'
         } : {
           padding: '1rem 1.5rem',
           cursor: 'pointer',
+          color: 'rgba(0,0,0,.3)',
           backgroundColor: hovered ? '#3333FF' : '#FFFFFF'
         }))
       }
@@ -237,11 +238,11 @@ function getStylingFromBase16(/*base16Theme*/) {
     inputEnhancementsPopup: prefixer({
       display: 'flex',
       position: 'absolute',
-      left: 0,
-      top: '100%',
+      left: -47,
+      marginTop: 6,
       zIndex: 10000,
       maxHeight: '30rem',
-      minWidth: '22rem',
+      width: 'calc(100% + 47px)',
       backgroundColor: '#FFFFFF',
       boxShadow: '1px 1px 4px rgba(100, 100, 100, 0.3)',
       flexDirection: 'column'
