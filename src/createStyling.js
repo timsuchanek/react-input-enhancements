@@ -241,7 +241,7 @@ function getStylingFromBase16(/*base16Theme*/) {
       left: -47,
       marginTop: 6,
       zIndex: 10000,
-      maxHeight: '30rem',
+      maxHeight: '15rem',
       width: 'calc(100% + 47px)',
       backgroundColor: '#FFFFFF',
       boxShadow: '1px 1px 4px rgba(100, 100, 100, 0.3)',
