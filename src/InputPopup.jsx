@@ -75,9 +75,12 @@ export default class InputPopup extends PureComponent {
     const caret = this.renderCaretSVG(styling, isActive, hover, popupShown);
 
     return (
-      <div {...styling('inputEnhancementsPopupWrapper')}
+      <div
+           className='input-popup'
+           {...styling('inputEnhancementsPopupWrapper')}
            onFocus={this.handleFocus}
            onBlur={this.handleBlur}
+           onMouseDown={this.handleMouseDown}
            {...inputPopupProps}>
         {this.renderInput(styling, restProps)}
         {onRenderCaret(styling, isActive, hover, caret)}
@@ -173,15 +176,24 @@ export default class InputPopup extends PureComponent {
 
   handleBlur = e => {
     this.blurTimeout = setTimeout(() => {
-      this.setState({
-        isActive: false,
-        popupShown: false
-      });
-      this.blurTimeout = null;
-    });
+      if (!this.blurForbidden) {
+        this.setState({
+          isActive: false,
+          popupShown: false
+        });
+        this.blurTimeout = null;
+      }
+    }, 20);
 
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
+  }
+
+  handleMouseDown = e => {
+    this.blurForbidden = true
+    setTimeout(() => {
+      this.blurForbidden = false
+    }, 50)
   }
 }

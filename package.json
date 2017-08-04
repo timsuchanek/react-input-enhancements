@@ -81,9 +81,5 @@
     "react-day-picker-themeable": "^2.5.1"
   },
   "author": "Alexander <alexkuz@gmail.com> (http://kuzya.org/)",
-  "license": "MIT",
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+  "license": "MIT"
 }
